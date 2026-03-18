@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quad County Emergency Services LLC | Emergency & LED Solutions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            dark: '#020617',
+                            primary: '#0f172a',
+                            accent: '#06b6d4',
+                            accentHover: '#0891b2',
+                            light: '#f0f9ff',
+                            gray: '#64748b',
+                            surface: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hero-section {
+            background-image: url('images/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(2, 6, 23, 0.7);
+            z-index: 1;
+        }
+
+        .glass-nav {
+            background: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #22d3ee, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        #mobile-menu.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .consultation-form input,
+        .consultation-form textarea {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            color: #1e293b;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .consultation-form input:focus,
+        .consultation-form textarea:focus {
+            border-color: #06b6d4;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+        }
+
+        .hamburger-line {
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-active .hamburger-line-1 {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-active .hamburger-line-2 {
+            opacity: 0;
+        }
+
+        .hamburger-active .hamburger-line-3 {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+    </style>
+</head>
+
+<body class="font-sans text-slate-800 antialiased bg-slate-50">
+<nav class="fixed w-full z-50 glass-nav" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-start lg:justify-between items-center h-20 gap-4">
+            
+            <div class="flex-shrink-0 flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-brand-accent text-xl md:text-2xl"></i>
+                <span class="font-bold text-base sm:text-lg lg:text-xl text-white tracking-tight leading-tight">
+                    Quad County Emergency Services LLC
+                </span>
+            </div>
+            
+            <div class="lg:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-white hover:text-brand-accent focus:outline-none p-2 rounded-lg hover:bg-white/10 transition-all" aria-label="Toggle menu">
+                    <div class="w-6 h-6 relative flex flex-col justify-center items-center">
+                        <span class="hamburger-line hamburger-line-1 w-6 h-0.5 bg-white absolute top-1"></span>
+                        <span class="hamburger-line hamburger-line-2 w-6 h-0.5 bg-white absolute"></span>
+                        <span class="hamburger-line hamburger-line-3 w-6 h-0.5 bg-white absolute bottom-1"></span>
+                    </div>
+                </button>
+            </div>
+
+            <div class="hidden lg:flex space-x-8 items-center">
+                <a href="#home" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Home</a>
+                <a href="#services" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Services</a>
+                <a href="#reviews" class="text-slate-300 hover:text-brand-accent transition-colors text-sm font-medium">Reviews</a>
+                <a href="#contact" class="bg-brand-accent hover:bg-brand-accentHover text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all shadow-lg shadow-cyan-500/30">
+                    Get a Quote
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="lg:hidden bg-brand-dark/95 backdrop-blur-xl border-t border-slate-800">
+        <div class="px-4 py-4 space-y-2 text-center">
+            <a href="#home" class="mobile-link block py-3 text-slate-300 hover:text-white transition-colors">Home</a>
+            <a href="#services" class="mobile-link block py-3 text-slate-300 hover:text-white transition-colors">Services</a>
+            <a href="#reviews" class="mobile-link block py-3 text-slate-300 hover:text-white transition-colors">Reviews</a>
+            <a href="#contact" class="mobile-link block py-3 text-brand-accent font-bold">Get a Quote</a>
+        </div>
+    </div>
+</nav>
+
+    <section id="home" class="hero-section min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-25">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                <div data-aos="fade-right" class="-mt-20 lg:mt-0">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface/50 border border-brand-accent/30 text-brand-accent text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-sm">
+                        <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+                        Serving Missouri & Surrounding Areas
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                        Illuminate Your World.<br>
+                        <span class="text-gradient">Secure Your Safety.</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 mb-8 leading-relaxed max-w-lg">
+                        From professional emergency vehicle upfits to stunning residential Govee installations. We bring
+                        light and safety to Missouri homes and businesses.
+                    </p>
+                    <div class="flex flex-col sm:flex-row">
+                        <a href="#services"
+                            class="px-8 py-4 bg-brand-accent text-white rounded-lg font-bold text-lg text-center">Explore
+                            Services</a><br>
+                        <a href="#reviews"
+                            class="px-8 py-4 bg-white/10 text-white rounded-lg font-bold text-lg border border-white/20 text-center">View
+                            Reviews</a>
+                    </div>
+                </div>
+
+                <div class="hidden lg:block" data-aos="fade-left">
+                    <div
+                        class="bg-brand-dark/90 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-brand-accent/20 max-w-md mx-auto">
+                        <h3 class="text-3xl font-bold text-white mb-6 text-center">FREE CONSULTATION</h3>
+                        <form class="consultation-form space-y-5">
+                            <div>
+                                <label class="block text-white text-sm font-semibold mb-2">Your Name *</label>
+                                <input type="text" placeholder="John Doe" required>
+                            </div>
+                            <div>
+                                <label class="block text-white text-sm font-semibold mb-2">Phone *</label>
+                                <input type="tel" placeholder="+1 720-530-3933" required>
+                            </div>
+                            <div>
+                                <label class="block text-white text-sm font-semibold mb-2">Your City *</label>
+                                <input type="text" placeholder="Missouri City" required>
+                            </div>
+                            <div>
+                                <label class="block text-white text-sm font-semibold mb-2">How can we help? *</label>
+                                <textarea rows="3" placeholder="Your message..." required></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-brand-accent hover:bg-brand-accentHover text-white font-bold py-4 rounded-lg text-lg transition-colors">
+                                SEND REQUEST
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:hidden absolute bottom-24 left-1/2 -translate-x-1/2 z-20">
+            <img src="images/arrows.png" alt="Scroll Down" class="w-44 h-auto opacity-100 drop-shadow-2xl">
+        </div>
+    </section>
+
+    <section
+        class="lg:hidden relative z-30 -mt-8 bg-white rounded-t-[40px] px-6 pt-16 pb-16 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] w-full">
+        <div class="absolute -top-10 left-1/2 -translate-x-1/2">
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-brand-accent rounded-full blur opacity-25"></div>
+                <img src="images/logo_white.jpg" alt="Logo"
+                    class="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-2xl">
+            </div>
+        </div><br>
+
+        <div class="max-w-md mx-auto">
+            <h2 class="text-3xl font-black text-slate-900 mb-8 uppercase text-center tracking-tight">Free Consultation
+            </h2>
+
+            <form class="consultation-form space-y-5">
+                <div>
+                    <label class="block text-slate-900 font-bold text-sm mb-2 pl-1">Your Name *</label>
+                    <input type="text" placeholder="John Doe" required>
+                </div>
+                <div>
+                    <label class="block text-slate-900 font-bold text-sm mb-2 pl-1">Phone *</label>
+                    <input type="tel" placeholder="+1 720-530-3933" required>
+                </div>
+                <div>
+                    <label class="block text-slate-900 font-bold text-sm mb-2 pl-1">Your City *</label>
+                    <input type="text" placeholder="Missouri City" required>
+                </div>
+                <div>
+                    <label class="block text-slate-900 font-bold text-sm mb-2 pl-1">How can we help? *</label>
+                    <textarea rows="4" placeholder="Your message..." required></textarea>
+                </div>
+                <button type="submit"
+                    class="w-full bg-brand-accent text-white font-black py-4 rounded-xl uppercase tracking-wider shadow-xl shadow-cyan-900/10 active:scale-[0.98] transition-all mt-6 text-lg">
+                    Send Request
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50 lg:hidden">
+        <i class="fa-solid fa-chevron-down text-2xl"></i>
+    </div>
+
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="text-slate-500 font-semibold uppercase tracking-widest text-sm mb-2">Our Services</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Explore Our Installation Services</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-4">
+
+                <div class="lg:col-span-2 space-y-8" data-aos="fade-up" data-aos-delay="100">
+                    <h3
+                        class="text-center lg:text-left text-lg font-bold text-slate-900 uppercase tracking-wider mb-6 border-b border-slate-100 pb-2">
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
+                        <div
+                            class="bg-white rounded-xl shadow-md border border-slate-100 overflow-hidden group hover:shadow-xl hover:border-brand-accent/30 transition-all duration-300">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="https://image.qwenlm.ai/public_source/05fad379-8274-45bc-b6e4-c86971332db9/1d425667d-054c-4dea-88a6-6daea1f1ac53.png"
+                                    alt="Emergency Vehicle Lights"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="relative px-6 pb-6">
+
+                                <h4 class="text-xl font-bold text-slate-900 mt-4 mb-2">Emergency Vehicles</h4>
+                                <p class="text-slate-500 text-sm mb-4 leading-relaxed">Emergency Lights & Siren Setup
+                                </p>
+                                <a href="#contact"
+                                    class="text-brand-accent font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                                    Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-white rounded-xl shadow-md border border-slate-100 overflow-hidden group hover:shadow-xl hover:border-brand-accent/30 transition-all duration-300">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="https://image.qwenlm.ai/public_source/05fad379-8274-45bc-b6e4-c86971332db9/1868d8931-f53c-44ed-86ae-a98b84623c5f.png"
+                                    alt="Fleet Utility Trucks"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="relative px-6 pb-6">
+
+                                <h4 class="text-xl font-bold text-slate-900 mt-4 mb-2">Fleet Solutions</h4>
+                                <p class="text-slate-500 text-sm mb-4 leading-relaxed">Commercial Safety Lighting</p>
+                                <a href="#contact"
+                                    class="text-brand-accent font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                                    Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-3 space-y-8" data-aos="fade-up" data-aos-delay="200">
+                    <h3
+                        class="text-center lg:text-left text-lg font-bold text-slate-900 uppercase tracking-wider mb-6 border-b border-slate-100 pb-2">
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div
+                            class="bg-white rounded-xl shadow-md border border-slate-100 overflow-hidden group hover:shadow-xl hover:border-brand-accent/30 transition-all duration-300">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="https://image.qwenlm.ai/public_source/05fad379-8274-45bc-b6e4-c86971332db9/1d5c5117e-a0ea-4f4b-93b5-cb2c01abbc25.png"
+                                    alt="UTV Light Bar"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="relative px-6 pb-6">
+
+                                <h4 class="text-xl font-bold text-slate-900 mt-4 mb-2">UTV/ATV Kits</h4>
+                                <p class="text-slate-500 text-sm mb-4 leading-relaxed">UTV/ATV Turn Signal & Safety Kits
+                                </p>
+                                <a href="#contact"
+                                    class="text-brand-accent font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                                    Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-white rounded-xl shadow-md border border-slate-100 overflow-hidden group hover:shadow-xl hover:border-brand-accent/30 transition-all duration-300">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="https://image.qwenlm.ai/public_source/05fad379-8274-45bc-b6e4-c86971332db9/175d8f7d6-57a3-45d9-84f7-47d8a1e03371.png"
+                                    alt="Govee House Lights"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="relative px-6 pb-6">
+
+                                <h4 class="text-xl font-bold text-slate-900 mt-4 mb-2">Govee Permanent Lighting</h4>
+                                <p class="text-slate-500 text-sm mb-4 leading-relaxed">Govee Home & Holiday Lighting
+                                    Installation</p>
+                                <a href="#contact"
+                                    class="text-brand-accent font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                                    Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-white rounded-xl shadow-md border border-slate-100 overflow-hidden group hover:shadow-xl hover:border-brand-accent/30 transition-all duration-300">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="https://image.qwenlm.ai/public_source/05fad379-8274-45bc-b6e4-c86971332db9/11fc1e482-7cc5-4619-9579-36ef92ad63f8.png"
+                                    alt="Landscape Path Lights"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="relative px-6 pb-6">
+
+                                <h4 class="text-xl font-bold text-slate-900 mt-4 mb-2">Landscape Lighting</h4>
+                                <p class="text-slate-500 text-sm mb-4 leading-relaxed">Custom LED Outdoor Lighting</p>
+                                <a href="#contact"
+                                    class="text-brand-accent font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                                    Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us / Stats -->
+    <section class="py-20 bg-brand-primary text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-700">
+                <div class="p-4" data-aos="zoom-in">
+                    <div class="text-4xl font-bold text-brand-accent mb-2">100%</div>
+                    <div class="text-slate-300 font-medium">Satisfaction Guaranteed</div>
+                </div>
+                <div class="p-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-4xl font-bold text-brand-accent mb-2">Licensed</div>
+                    <div class="text-slate-300 font-medium">Missouri Insured Experts</div>
+                </div>
+                <div class="p-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-4xl font-bold text-brand-accent mb-2">24/7</div>
+                    <div class="text-slate-300 font-medium">Support for Emergency Clients</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="reviews" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="flex justify-center items-center gap-2 mb-4">
+                    <i class="fa-brands fa-google text-2xl text-brand-accent"></i>
+                    <span class="text-slate-500 font-medium">Verified Reviews</span>
+                </div>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Trusted by Missouri Locals</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100" data-aos="fade-up"
+                    data-aos-delay="0">
+                    <div class="flex text-amber-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 mb-6 italic">"The owner solved our headlight problems and was highly
+                        knowledgeable about his work and what he was doing. Was very fair with pricing, communication,
+                        and even made another trip to the store when he figured out we needed another part. Would highly
+                        recommend and trust him with all my auto needs. Thanks again for solving a huge headache in a
+                        timely manner and on a freezing cold night !"</p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500">
+                            JD</div>
+                        <div>
+                            <div class="font-bold text-slate-900">Alex Feicht </div>
+                            <div class="text-xs text-slate-500">Missouri </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div class="flex text-amber-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 mb-6 italic">"James shipped items within 24hrs, came as promised, and
+                        answered all the questions I had on my install right away."</p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500">
+                            MR</div>
+                        <div>
+                            <div class="font-bold text-slate-900">Mike Catania</div>
+                            <div class="text-xs text-slate-500">Missouri </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <div class="flex text-amber-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 mb-6 italic">"Great experience with the UTV turn signal kit. Very
+                        knowledgeable about local laws and made sure everything was wired safely. Will be back for
+                        holiday lights."</p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500">
+                            ST</div>
+                        <div>
+                            <div class="font-bold text-slate-900">Sarah T.</div>
+                            <div class="text-xs text-slate-500">Columbia, MO</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="#"
+                    class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-accentHover transition-colors">
+                    Read all Google Reviews <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Review Us Box -->
+            <div class="mt-16 flex justify-center" data-aos="zoom-in">
+                <div
+                    class="bg-black p-10 rounded-2xl border-[3px] border-white max-w-md w-full text-center shadow-2xl transition-transform hover:scale-[1.01] duration-300">
+                    <h3 class="text-4xl font-black text-white mb-6 uppercase tracking-tight font-sans">Review us on
+                        google</h3>
+                    <div class="flex justify-center gap-2 text-amber-500 text-3xl mb-8">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <a href="review.html" target="review"
+                        class="inline-block w-full py-5 bg-[#b58735] hover:bg-[#a37a30] text-white font-black rounded-lg transition-all shadow-lg uppercase tracking-widest text-lg">
+                        Leave Us a Review
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact Section -->
+    <section id="location" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Visit Our Workshop</h2>
+                    <p class="text-slate-600 mb-8 text-lg">
+                        Located in the heart of Missouri, we're ready to handle your next project. Stop by for a
+                        consultation or drop off your vehicle for installation.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <i class="fa-solid fa-location-dot text-brand-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Our Location</h4>
+                                <p class="text-slate-600">123 Innovation Drive, Missouri, USA</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <i class="fa-solid fa-phone text-brand-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Call Us</h4>
+                                <p class="text-slate-600">(555) 123-4567</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <i class="fa-solid fa-envelope text-brand-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Email Us</h4>
+                                <p class="text-slate-600">info@molightandsafety.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <a href="#contact"
+                            class="inline-block bg-brand-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-slate-800 transition-colors shadow-lg">
+                            Schedule Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <div class="h-[400px] w-full bg-slate-200 rounded-2xl overflow-hidden shadow-lg relative group"
+                    data-aos="fade-left">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d494637.678763065!2d-92.86677664608916!3d38.57393634613886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c31848b0b55555%3A0x6d55555555555555!2sMissouri!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        class=" "></iframe>
+                    <div class="absolute inset-0 pointer-events-none border-4 border-white/20 rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-brand-primary to-brand-dark text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Light Up Your Project?</h2>
+            <p class="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">
+                Whether it's emergency safety gear or residential ambiance, our team in Missouri is standing by. Get a
+                free quote today.
+            </p>
+            <form class="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 max-w-lg mx-auto text-left"
+                onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly.');">
+                <div class="grid grid-cols-1 gap-4">
+                    <input type="text" placeholder="Your Name"
+                        class="w-full px-4 py-3 rounded-lg border border-slate-600 bg-slate-800 text-white placeholder-slate-400 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all">
+                    <input type="email" placeholder="Email Address"
+                        class="w-full px-4 py-3 rounded-lg border border-slate-600 bg-slate-800 text-white placeholder-slate-400 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all">
+                    <select
+                        class="w-full px-4 py-3 rounded-lg border border-slate-600 bg-slate-800 text-white focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all">
+                        <option class="bg-slate-800">Service Interested In...</option>
+                        <option class="bg-slate-800">Emergency Equipment</option>
+                        <option class="bg-slate-800">UTV/ATV Kits</option>
+                        <option class="bg-slate-800">Govee/Holiday Lighting</option>
+                        <option class="bg-slate-800">Commercial LED</option>
+                    </select>
+                    <button type="submit"
+                        class="w-full bg-brand-accent text-white font-bold py-3 rounded-lg hover:bg-brand-accentHover transition-colors shadow-lg shadow-cyan-500/30">
+                        Send Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-slate-400 pt-0 pb-24 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4 text-white">
+                        <i class="fa-solid fa-bolt text-brand-accent text-xl"></i>
+                        <span class="font-bold text-lg">Quad County Emergency Services LLC</span>
+                    </div>
+                    <p class="text-sm leading-relaxed">
+                        Professional LED and emergency equipment installation serving Missouri and surrounding areas.
+                        Quality workmanship guaranteed.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-brand-accent transition-colors">Emergency Upfits</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition-colors">UTV/ATV Lighting</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition-colors">Govee Installation</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition-colors">Holiday Lighting</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-brand-accent transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-all">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-all">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-all">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2023 Quad County Emergency Services LLC. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Designed in Missouri.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS Animations
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        mobileMenuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+
+            if (isMenuOpen) {
+                mobileMenu.classList.add('open');
+                mobileMenuBtn.classList.add('hamburger-active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.remove('open');
+                mobileMenuBtn.classList.remove('hamburger-active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
+                mobileMenu.classList.remove('open');
+                mobileMenuBtn.classList.remove('hamburger-active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isMenuOpen && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                isMenuOpen = false;
+                mobileMenu.classList.remove('open');
+                mobileMenuBtn.classList.remove('hamburger-active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Navbar stays visible - only add shadow on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+
+        // Smooth scroll for anchor links (fallback for older browsers)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
